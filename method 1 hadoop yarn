@@ -1,0 +1,17 @@
+#!bin/bash
+dir = $(cd $(dirname $ 0) ; pwd )
+jobName = "method 1 : Reading a csv file with hadoop yarn cluster "
+className = org.example
+app_jar = examRahmouniGhassen/target/examRahmouniGhassen-1.0-SNAPSHOT.jar
+echo "Hadoop Yarn cluster" 
+
+--files $(dir/application.conf) 
+
+mvn install
+
+spark-submit --master yarn 
+--deploy-mode cluster 
+--name $jobName
+--class $className
+--files $(dir/config.properties) 
+$app_jar
