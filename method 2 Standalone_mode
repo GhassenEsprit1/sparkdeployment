@@ -1,0 +1,17 @@
+#!bin/bash
+dir = $(cd $(dirname $ 0) ; pwd )
+jobName = "Reading a csv file "
+className = org.example
+utility_jar =  $($dir/utility_jar)
+app_jar = examRahmouniGhassen/target/examRahmouniGhassen-1.0-SNAPSHOT.jar
+
+
+mvn install
+./spark-submit --class   $className 
+--name $jobName
+--conf  spar.driver.memory= 2g
+--jars $utility_jar
+--master local 
+--files $(dir/application.conf) 
+$app_jar
+
